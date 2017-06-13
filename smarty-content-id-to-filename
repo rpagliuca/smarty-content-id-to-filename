@@ -1,0 +1,6 @@
+INPUT=$1
+if [ -z "$INPUT" ]; then
+  echo 'Smarty content id is required.'
+  exit 1
+fi
+cat `grep $INPUT | head -n1 | awk -F: '{ print $1 }'` | grep 'compiled from' | awk -F'"' '{ print $2 }'
